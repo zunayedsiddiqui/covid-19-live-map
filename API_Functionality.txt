@@ -1,0 +1,95 @@
+Getting location  data (python example) 
+
+ 
+import requests 
+
+ resp = requests.post("http://149.165.157.107:1971/api/get_location", json=["Dhaka,Bangladesh", "Chattogram,Bangladesh"]) 
+
+ print(resp.content) 
+
+ 
+
+Getting Data at Country Level 
+
+http://149.165.157.107:1971/api/data?name=Bangladesh&type=country&date=2020-04-15 
+
+ 
+
+ 
+
+Getting Data at City Level 
+
+http://149.165.157.107:1971/api/data?name=Dhaka&type=city&date=2020-04-17 
+
+ 
+
+Uploading User Location Data (python example) 
+
+from datetime import datetime 
+
+import requests 
+
+  
+
+id= "5e9cc27540fc5627c6342f65" 
+
+time = str(datetime.now()) 
+
+lat = 36.34 
+
+long = 60.45 
+
+  
+
+data = { 
+
+      "id": id, 
+
+    "locations": [{"time": time, "lat": lat, "long": long}] 
+
+} 
+
+  
+
+resp = requests.post("http://149.165.157.107:1971/api/log_location", json=data) 
+
+print(resp.content) 
+
+ 
+
+ 
+
+ 
+
+Creating an indentifier for installed application  
+
+http://149.165.157.107:1971/api/gen_id 
+
+ 
+
+ 
+
+Gives historical data for a place 
+
+http://149.165.157.107:1971/api/loc_data_seq?loc_type=zone&loc_name=Adabor 
+
+ 
+
+Result will be 
+
+ 
+{"status": "sucess","payload": [{"date": "2020-04-18","data": {"cases": 5}},{"date": "2020-04-19","data": {"cases": 5}},{"date": "2020-04-15","data": {"cases": 5}},{"date": "2020-04-16","data": {"cases": 5}},{"date": "2020-04-17","data": {"cases": 5}},{"date": "2020-04-20","data": {"cases": 5}}]} 
+
+ 
+
+ 
+
+Gives Summary data for a place (only country level available for now) 
+
+http://149.165.157.107:1971/api/summary?name=Bangladesh&type=country&date=2020-04-15 
+
+ 
+
+Example data: 
+
+{"status": "success","payload": {"cured": 49,"name": "Bangladesh","deaths": 50,"date": "2020-04-15","cases": 1231,"type": "country"}}
