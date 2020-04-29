@@ -14,12 +14,20 @@ import java.nio.charset.StandardCharsets;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/********************************************************************************
+ * DataFetcher class: This class uses Async Task to send a GET request to       *
+ *                    the API written by Sayeed Salam in order to get data      *
+ *                    about Covid-19 cases in different regions in Bangladesh.  *
+ *                                                                              *
+ * @author Ihfaz Tajwar                                                         *
+ ********************************************************************************/
 public class DataFetcher extends AsyncTask<String, Void, JSONObject> {
     private static final String REQUEST_METHOD = "GET";
     private static final int READ_TIMEOUT = 15000;
     private static final int CONNECTION_TIMEOUT = 15000;
     private static final String BASE_URL = "http://149.165.157.107:1971/api/data";
 
+    // This method runs on a different thread so that the UI thread isn't interrupted
     @Override
     protected JSONObject doInBackground(String... strings) {
         JSONObject resp;
@@ -61,6 +69,7 @@ public class DataFetcher extends AsyncTask<String, Void, JSONObject> {
         return resp;
     }
 
+    // This method reads the buffered input and returns a String
     private String readAll(BufferedReader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;

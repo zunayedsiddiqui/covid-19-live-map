@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * ListActivity class: This class is the java class for the activity which  *
  *                     displays the case data in a table/list format        *
  *                                                                          *
- *  * @author Ihfaz Tajwar                                                  *
+ * @author Ihfaz Tajwar                                                     *
  ****************************************************************************/
 public class ListActivity extends AppCompatActivity {
 
