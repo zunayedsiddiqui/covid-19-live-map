@@ -4,16 +4,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 /****************************************************************************
  * ListAdapter class: This class is the custom adapter for the RecyclerView *
  *                    which is used to display the case data as a list      *
+ *                                                                          *
+ *  * @author Ihfaz Tajwar                                                  *
  ****************************************************************************/
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
-    ArrayList<Case> cases;  // Arraylist to hold the cases
+    private ArrayList<Case> cases;  // Arraylist to hold the cases
 
     // Constructor
     public ListAdapter(ArrayList<Case> cases) {

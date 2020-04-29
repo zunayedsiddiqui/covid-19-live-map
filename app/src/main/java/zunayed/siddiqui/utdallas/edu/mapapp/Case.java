@@ -2,7 +2,9 @@ package zunayed.siddiqui.utdallas.edu.mapapp;
 
 /***********************************************************************************
  * Case Class: This class models the individual cases by district and dhaka zones. *
- *             An object of this class represents a row in the tables of cases     *
+ *             An object of this class represents a row in the table of cases.     *
+ *                                                                                 *
+ * @author Ihfaz Tajwar                                                            *
  ***********************************************************************************/
 public class Case {
 
