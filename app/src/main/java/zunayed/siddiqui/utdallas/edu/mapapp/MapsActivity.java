@@ -15,6 +15,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Map;
+
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -23,6 +25,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -43,10 +46,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Gulshan, Dhaka
-        LatLng gulshan = new LatLng(23.792968, 90.407902);
-        mMap.addMarker(new MarkerOptions().position(gulshan).title("Marker in Gulshan, Dhaka"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gulshan, 9F)); // Zooming 9times
+        // Initial marker in Bangladesh
+        LatLng bangladesh = new LatLng(23.6850, 90.3563);
+
+        // Add a marker in Dhaka
+        LatLng dhaka = new LatLng(23.8103, 90.4125);
+
+        // Add a marker in Chottogram
+        LatLng chottogram = new LatLng(22.3569, 91.7832);
+
+        // Add a marker in Sylhet
+        LatLng sylhet = new LatLng(24.8949, 91.8687);
+
+        // Add a marker in Narayangonj
+        LatLng narayangonj = new LatLng(23.6238, 90.5000);
+
+        // Add a marker in Rajshahi
+        LatLng rajshahi = new LatLng(24.3745, 88.6042);
+
+        // add markers for the specific locations
+        mMap.addMarker(new MarkerOptions().position(dhaka).title("Dhaka COVID-19 Cases: 700"));
+        mMap.addMarker(new MarkerOptions().position(chottogram).title("Chottogram COVID-19 Cases: 300"));
+        mMap.addMarker(new MarkerOptions().position(sylhet).title("Sylhet COVID-19 Cases: 200"));
+        mMap.addMarker(new MarkerOptions().position(narayangonj).title("Narayangonj COVID-19 Cases: 90"));
+        mMap.addMarker(new MarkerOptions().position(rajshahi).title("Rajshahi COVID-19 Cases: 165"));
+
+        // set a speicific zoom of the map
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bangladesh, 7F)); // Zooming 6times
     }
 
     @Override
