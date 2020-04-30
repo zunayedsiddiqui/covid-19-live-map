@@ -9,14 +9,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /****************************************************************************
  * ListActivity class: This class is the java class for the activity which  *
- *                     displays the case data in a table/list format        *
+ *                     displays the case data in a table/list format.       *
  *                                                                          *
  * @author Ihfaz Tajwar                                                     *
  ****************************************************************************/
@@ -41,32 +46,17 @@ public class ListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-//        populateList(null);
-
-        fetchData("Bangladesh", "country", String.valueOf(LocalDate.now()));
-
+        fetchData("Bangladesh", "country", String.valueOf(LocalDate.now()));    // District cases
+//        fetchData("Dhaka", "city", String.valueOf(LocalDate.now()));            // Dhaka zone cases
     }
 
-    private void populateList(JSONObject jsonObject) {
-        // Test data
-        cases.add(new Case("Dhaka", 700));
-        cases.add(new Case("Gazipur", 150));
-        cases.add(new Case("Mymensigh", 25));
-        cases.add(new Case("Narayangonj", 90));
-        cases.add(new Case("Savar", 20));
-        cases.add(new Case("Sylhet", 200));
-        cases.add(new Case("Chottogram", 300));
-
-
-        // TODO: Parse JSON into cases list
-        System.out.println(jsonObject);
-
-        // Set the adapter to show the data in the recyclerview
-        adapter = new ListAdapter(cases);
+    protected void populateList(JSONObject inputJson) {
+        // Set the adapter to show the data in the recyclerview and parse json into list
+        adapter = new ListAdapter(parseJson(inputJson));
         recyclerView.setAdapter(adapter);
     }
 
-    public void fetchData(String name, String type, String date) {
+    protected void fetchData(String name, String type, String date) {
         String params = "name="+name+"&type="+type+"&date="+date;
 
         DataFetcher df = new DataFetcher() {
@@ -92,5 +82,34 @@ public class ListActivity extends AppCompatActivity {
         };
 
         df.execute(params);
+    }
+
+    protected ArrayList<Case> parseJson(JSONObject jsonObject) {
+        ArrayList<Case> caseList = new ArrayList<>();
+
+        try {
+            JSONObject payload = jsonObject.getJSONObject("payload");      // JSON object which contains all the data
+            String level = payload.getString("level");              // Determines if city or zone
+            JSONArray data = payload.getJSONArray("data");          // JSON array which contains the list of city/zone-cases
+
+            for (int i = 0; i < data.length(); i++) {
+                JSONObject obj = data.getJSONObject(i);
+                String loc = (level.equals("city") ? "city" : "zone");
+                caseList.add(new Case(obj.getString(loc), obj.getInt("cases")));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        // Sort the list by number of cases in descending order
+        Collections.sort(caseList, new Comparator<Case>() {
+            @Override
+            public int compare(Case obj1, Case obj2) {  // Compare number of cases
+                return obj2.getnCase() - obj1.getnCase();
+            }
+        });
+
+        return caseList;
     }
 }
