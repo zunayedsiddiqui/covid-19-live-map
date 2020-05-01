@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -26,8 +26,7 @@
                 android:id="@+id/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/loc_h"
@@ -36,7 +35,7 @@
                     android:background="@drawable/table_heading_back"
                     android:padding="8dp"
                     android:text="Location"
-                    android:textColor="@color/beige"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -47,7 +46,7 @@
                     android:background="@drawable/table_heading_back"
                     android:padding="8dp"
                     android:text="Cases"
-                    android:textColor="@color/beige"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -56,7 +55,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/white"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
