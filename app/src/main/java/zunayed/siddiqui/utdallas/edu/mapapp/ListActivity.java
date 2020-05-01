@@ -27,7 +27,6 @@ import java.util.List;
  ****************************************************************************/
 public class ListActivity extends AppCompatActivity {
 
-    private ArrayList<Case> cases;  // Arraylist to hold the cases
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -37,10 +36,8 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Initialize all the variables and objects
-        cases = new ArrayList<>();
+        // Initialize recycle view and layoutManager
         recyclerView = findViewById(R.id.rv);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

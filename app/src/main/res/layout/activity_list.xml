@@ -8,28 +8,6 @@
     tools:context=".ListActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.049"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -52,24 +30,24 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/date_h"
+                    android:id="@+id/loc_h"
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/table_heading_back"
                     android:padding="8dp"
                     android:text="Location"
-                    android:textColor="@color/white"
+                    android:textColor="@color/beige"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/open_h"
+                    android:id="@+id/cases_h"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/table_heading_back"
                     android:padding="8dp"
                     android:text="Cases"
-                    android:textColor="@color/white"
+                    android:textColor="@color/beige"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
